@@ -4,14 +4,15 @@ This is a Python-based Optical Mark Recognition (OMR) System. It uses Streamlit 
 
 # Installation
 To run the project, you'll need to install Python and the following libraries:
-- OpenCV: 'pip install opencv-python'
-- Streamlit: 'pip install streamlit'
+- OpenCV: '**pip install opencv-python**'
+- Streamlit: '**pip install streamlit**'
 
 # Usage
 To run the OMR System, simply navigate to the project directory in your terminal and run the following command:
 - streamlit run /OMR_System_Project/script/app.py
+- Here **grade_exam** function is called in **app.py** file from **finalReview.py** file
 
-This will start a local Streamlit server, and the application will be accessible in your web browser at http://localhost:8501.
+This will start a local Streamlit server, and the application will be accessible in your web browser at **http://localhost:8501**.
 
 # Features
 The OMR System has the following features:
