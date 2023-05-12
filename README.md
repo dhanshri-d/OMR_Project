@@ -15,6 +15,9 @@ To run the OMR System, simply navigate to the project directory in your terminal
 This will start a local Streamlit server, and the application will be accessible in your web browser at **http://localhost:8501**.
 - The Working and Result of System will be like 
 
+# Demo
+You can see the OMR System in action in the following video:
+
 <video width="320" height="240" controls>
   <source src="./streamlit-app-2023-05-12-14-05-12.webm" type="video/webm">
   Your browser does not support the video tag.
