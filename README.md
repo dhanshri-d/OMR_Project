@@ -9,7 +9,7 @@ To run the project, you'll need to install Python and the following libraries:
 
 # Usage
 To run the OMR System, simply navigate to the project directory in your terminal and run the following command:
-- streamlit run /OMR System Project/script/app.py [ARGUMENTS]
+- streamlit run /OMR_System_Project/script/app.py
 
 This will start a local Streamlit server, and the application will be accessible in your web browser at http://localhost:8501.
 
