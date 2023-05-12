@@ -1,0 +1,878 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{listings} 
+\graphicspath{ {figures/} }
+\usepackage{array}
+\usepackage[left=1 in,right=1 in,top=1 in,bottom=1 in]{geometry}
+\setlength{\parindent}{4em}
+\setlength{\parskip}{1em}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\input{arduinoLanguage.tex}  
+\renewcommand{\baselinestretch}{1.5}
+    
+\begin{document}
+\thispagestyle{empty}
+\begin{center}
+A Project Report on\\
+\vspace{4mm}
+\textbf{\huge{IoT Based Auto Billing Shopping Cart}}\\
+\vspace{6mm}
+Submitted to\\{\textbf{Sant Gadge Baba Amravati University,Amravati in Partial Fulfillment of the
+\\Requirement for the Degree of Bachelor of Technology in Electronics and\\Telecommunication Engineering\\}}
+\vspace{4mm}
+Submitted By \\
+\textbf{\large{Trupti  K. Yenpeddiwar}}\\
+\textbf{\large{(ID-17004022)}}\\
+\textbf{\large{Shoyebshah Ashkan}}\\
+\textbf{\large{(ID-17004066)}}\\
+\textbf{\large{Anuradha K. Gomase}}\\
+\textbf{\large{(ID-17004068)}}\\
+\vspace{3mm}
+Supervisor\\
+\textbf{\large{Dr.Shubhada S Thakare}}
+\vspace{3mm}
+\end{center}
+
+\begin{center}
+\vspace{3mm}
+\includegraphics[scale=0.7]{GcoeaLogo.png}
+\end{center}
+\vspace{3mm}
+\begin{center}
+\textbf{\large{Department of Electronics and Telecommunication Engineering}}\\
+
+\textbf{\large{Government College of Engineering,
+Amravati}}
+ \\
+
+\textbf{\small{(An Autonomous Institute of Government of Maharashtra)}}\\
+
+\textbf{\large{Maharashtra State, India}}\\
+
+\textbf{\large{2020-2021}}
+\end{center}
+\newpage
+\pagenumbering{roman}
+\addcontentsline{toc}{section}{Certificate}
+\begin{center}
+\textbf{\large{GOVT. COLLEGE OF ENGINEERING, AMRAVATI-444604}}\\\textbf{\large{DEPARTMENT OF ELECTRONICS ENGINEERING}}\\
+\textbf{\underline{\large{CERTIFICATE}}}
+\end{center}
+\begin{center}
+\vspace{5mm}
+\includegraphics[scale=0.7]{GcoeaLogo.png}
+\end{center}
+\hspace*{1 cm}This is to certify that the project report entitled, \textbf{“Auto Billing Shopping Cart System”}, which is being submitted herewith for the award of fulfilment of degree of
+\textbf{`Bachelor of Technology'} in \textbf{`Electronics and Telecommunication Engineering'} of \textbf{“Sant Gadge Baba Amravati University, Amravati”}. This is the result of the project done by \textbf{Ms. TRUPTI YENPEDDIWAR (ID-17004022), Mr. SHOYEBSHAH ASHKAN (ID-17004066)} and \textbf{Ms. ANURADHA GOMASE (ID-17004068)} under my supervision and guidance.\\
+
+\vspace*{0.8 cm}
+\begin{flushleft}
+\hspace*{1cm}\textbf{Dr.Shubhada S Thakare}\hspace*{4.5 cm} \textbf{Dr. D. V. Rojatkar}  \\
+\hspace*{2.5 cm}Supervisor \hspace*{6.2 cm} Head of Department \\
+Department of Electronics Engineering \hspace*{2 cm}Department of Electronics Engineering\\
+\hspace*{0.3 cm}Government College of Engineering, \hspace*{2.5 cm}Government College of Engineering,\\
+\hspace*{2.5 cm}Amravati. \hspace*{7.3 cm}Amravati.
+\end{flushleft}
+\vspace*{0.8 cm}
+\begin{flushleft}
+\hspace*{2.5cm}\textbf{Principal}\\
+\hspace*{0.3 cm}Government College of Engineering,\\
+\hspace*{2.5 cm}Amravati.
+\end{flushleft}
+
+\newpage
+\addcontentsline{toc}{section}{Declaration}
+\begin{center}
+\large\textbf{DECLARATION}
+\end{center}
+\hspace*{1 cm}We hereby declare that we have formed and written the project report entitled “\textbf{Auto Billing Shopping Cart System”} under the guidance of \textbf{Dr.Shubhada S Thakare}, Department of Electronics, Government College of Engineering, Amravati. This work has not been previously submitted for the basis of the award of any degree or other similar title of this for any other diploma examining body or University.\\
+\vspace*{10cm}
+\\
+\hspace*{12cm}\textbf{Trupti Yenpeddiwar} \\
+\hspace*{13cm}(17004022)\\
+\hspace*{12cm}\textbf{Shoyebshah Ashkan} \\
+\hspace*{13cm}(17004066)\\
+Place: Amravati\hspace*{9cm}\textbf{Anuradha Gomase} \\
+Date:\hspace*{12cm}(17004068)\\
+
+
+\newpage
+\addcontentsline{toc}{section}{Acknowledgement}
+\begin{center}
+\large\textbf{ACKNOWLEDGEMENT}
+\end{center}
+\hspace*{1cm}This is a word of acknowledgement to express our gratitude and sincere thanks to all those illuminations because of whom, this work has become successful. Our supervisor \textbf{Dr.Shubhada S Thakare} inspired us at every stage and also helped in making available all the facilities to complete our project successfully. We would like to express special gratitude to our Respected Head of Department, \textbf{Dr. D. V. Rojatkar} for giving us such attention and time. We also acknowledge and thank our Honourable Principal \textbf{Dr. R. P. Borkar} and all the staff members of Electronics Department, Library and Workshop Department who has directly and indirectly helped in completing the project report.\\
+\vspace*{8cm}
+\\
+\hspace*{12cm}\textbf{Trupti Yenpeddiwar} \\
+\hspace*{13cm}(17004022)\\
+\hspace*{12cm}\textbf{Shoyebshah Ashkan} \\
+\hspace*{13cm}(17004066)\\
+Place: Amravati\hspace*{9cm}\textbf{Anuradha Gomase} \\
+Date:\hspace*{12cm}(17004068)\\
+
+\newpage
+\addcontentsline{toc}{section}{Abstract}
+\begin{center}
+\large\textbf{ABSTRACT}
+\end{center}
+\hspace*{1cm}As we are moving forward in this era, speed and comfort have become key factor of customer needs. Traditional shopping system makes customer to wait in line in a queue for their turn to come to pay the bills, which is tedious job. To keep up with the needs of modern customers, we want to make shopping system in malls as faster and comfortable as it can.\\
+\hspace*{1cm}The idea behind our project is to give a solution by modifying our normal shopping cart by making the process of making and paying bills automated. This automated system will avoid the huge amount of rush and cashier preparing bills using barcode scanner which is too time consuming and results in long queues. We will use RFID technology in this project. While we add or remove the item in our cart, the bill will get updated and also give the option for payment and will generate the receipt.
+
+\newpage
+\addcontentsline{toc}{section}{Contents}
+\begin{center}
+\tableofcontents
+\end{center}
+
+\newpage
+\addcontentsline{toc}{section}{List of Abbreviations}
+\begin{center}
+\large\textbf{LIST OF ABBREVIATIONS}
+\end{center}
+\begin{table}[h]
+\centering
+\begin{tabular}{l l}
+\textbf{Abbreviation} & \textbf{Illustration} \\
+RFID & Radio Frequency Identification \\
+LCD & Liquid Crystal Display \\
+UPC & Universal Product Code \\
+UN & United Nations \\
+RF & Radio Frequency \\
+PID & Product Identification Device \\
+ATM & Automated Teller Machine \\
+USB & Universal Serial Bus \\
+LI-FI & Light Fidelity \\
+NFC & Near-field communication \\
+GPS & Global Positioning System \\
+EEPROM & Electrically Erasable Programmable \\
+& Read-Only Memory \\
+IJARCET & International Journal of Advanced \\
+& Research in Computer Engineering \\
+& \& Technology
+\end{tabular}
+\end{table}
+
+\newpage
+\addcontentsline{toc}{section}{List of Figures}
+\renewcommand*\listfigurename{LIST OF FIGURES} 
+\begin{center}
+\listoffigures
+\end{center}
+
+\newpage
+\addcontentsline{toc}{section}{List of Tables}
+\renewcommand*\listtablename{LIST OF TABLES} 
+\begin{center}
+\listoftables
+\end{center}
+
+\newpage
+\pagenumbering{arabic}
+\begin{center}
+\section{INTRODUCTION}
+\end{center}
+\hspace*{1cm}Shopping is one in every of those things that almost all individuals get pleasure from, however once it involves wait in a very queue of asking counter, it becomes slow. Waiting on a bill counter makes searching too boring and a tedious task. Large quantity of rush and cashier making ready the bill with barcode scanner is simply too time intense and leads to long queues. Therefore, we have a tendency to thought, why not create a system which can be able to create bills autonomously. There has been associate rising demand for fast and straightforward payment of bills in supermarkets. This project describes the way to build an automatic and time saving system for the planet of retail which can create searching expertise impetuous, client friendly and secure. This machine-driven payment system consists of a RFID reader that is controlled by Arduino.\\
+\hspace*{1cm}The present system used for asking in searching malls uses Barcode technology. However, this barcode system has some limitations like low scanning vary, barcode scanner will browse product just one at a time, barcodes outline the sort of each product however can't be intimate unambiguously, barcodes square measure browse solely kind and can't be overwritten, etc.. conjointly the barcode system runs on optical (laser) technology. Barcodes conjointly need a substantial quantity of man power and human effort. Barcodes will get broken simply. Not solely this, this Barcode system needs the client to square in long queues so as to induce their product scanned and their bills generated. This method will sway be deadening and it conjointly consumes loads of your time of the purchasers, thereby adding to their frustration. With such a big number of disadvantages thereto, Barcode system remains in use. It's obvious that there's a requirement to cause a wiser and an additional economical system. \\
+\hspace*{1cm}Smart cart victimization Arduino and RFID may be a new advancement within the field of provide Chain optimization. This technique shall not solely eradicate the long queues in supermarkets and malls however conjointly save loads of your time for the purchasers. The system conjointly helps the client in cash management. The system uses RFID tags within the place of Barcode tags that square measure far more economical and powerful once it involves scanning of product. The system permits a client to scan the things and also the tramcar mechanically updates the overall value and bills the client. Whenever the consumer puts any product in tramcar it's detected by the RFID module and is displayed on LCD at the side of the worth of the merchandise. because the shopper goes on adding product, all product square measure detected by the module and thus the worth can increase consequently. Just in case if client changes his/her mind and doesn't wish any product additional within the tramcar he/she will take away it and also the worth additional are subtracted mechanically. At the top of searching the consumer can press the button that once ironed adds all the merchandise at the side of their worth and offers the overall quantity to be paid. At exit for verification the market keeper will verify the product purchased with the assistance of master card. Therefore, methodology is associate applicable method to be employed in places like supermarkets, this can facilitate in reducing hands and helps in creating a much better searching expertise for purchasers.\\
+\hspace*{1cm}The lines at the market are one in all the largest complaints regarding the searching expertise before long these lines may disappear once the ever-present Universal Product Code UPC code is replaced by good labels named as radio frequency identification [RFID] tags. RFID tags operated as intelligent bar codes that may refer to a networked system to trace each product that user place in user pushcart. Imagine about to the store, filling up user cart and walking right out the request. now not can client have to be compelled to wait until store worker rings up every item in client cart one product at a time. Rather than these waiting RFID tags can communicate with associate degree RFID reader which will sight each product within the cart and browse every up instantly comparison previous techniques.\\
+\hspace*{1cm}Radio Frequency Identification (RFID) involves a tag basically fixed to a product that identifies and tracks the merchandise via radio waves. These tags will carry from a thousand to 2000 bytes of knowledge. This technology has 3 parts: a scanning antenna, a transceiver with a decoder to interpret the information and a electrical device (RFID tag) pre-set with information concerning the product. RFID tag are scanned by the scanning antenna through the suggests that of radio. Frequency signal that interacts with the tags. Once the RFID tag is among the sector of the scanning antenna, it detects the activation signal and may transfer the {data} data in holds to be picked up by the scanning antenna.\\
+\begin{figure}
+\includegraphics[scale=0.5]{AutoBillingCart.png}
+\centering
+\caption{Auto Billing Cart}
+\end{figure}
+\hspace*{1cm}The RFID reader are connected to an outsized server which will send product data on client product to the merchant and information are keep in information of store. RFID tags are benefits over bar codes as a result of the tags have browse and write operation capabilities. information is kept on RFID tags is changed, updated and latched for security. Some malls that have begun exploitation RFID tags have found that the technology offers a far better thanks to track merchandise for stocking and promoting functions. With the assistance of RFID tags stores will see however quickly the product leave the shelves and UN agency is shopping for them.
+\subsection{Necessity}
+\hspace*{1cm}Now days getting and searching at huge malls is changing into a daily activity in railroad cities. we are able to see Brobdingnagian rush at malls on holidays and weekends. The push is even additional once their square measure special offers and discount. Folks purchase totally different things and place them in trolley car. once total purchase one has to attend request counter for payments. At the request counter the cashier prepare the bill exploitation code reader that could be a time overwhelming method and leads to long queues at request counters. Our aim is to develop a system which will be employed in searching malls to resolve the higher than mentioned challenge. The system is placed altogether the trolleys. It'll include a RFID reader. All the product within the mall is equipped with RFID tags. Once someone puts any product within the trolley car, its code is detected and also the worth of these product is kept in memory. As we have a tendency to place the product, the prices can get supplemental to total bill. therefore, the request is exhausted the trolley car itself. Item name and its price are displayed on LCD. additionally, the product name and its price are declared exploitation telephone receiver. At the request Counter the whole bill knowledge is transferred to computer by wireless RF modules.\\
+\hspace*{1cm}Humans invent and develop a technology that may cut back the time quality of their works. The most aim of this sensible looking system is to boost the speed of purchase victimization RFID that is employed as security access for product. On the off likelihood that the item is placed in to the trolley car implies it'll demonstrates the add and moreover the combination adds. Be that because it could, during this shrewd looking framework RFID tag is employed for going to the things. Therefore, this RFID tag enhances the security execution and moreover the speed. RFID is the extraordinary kind remote card that has integral the embedded chip with loop antenna. The integral embedded chip speaks to the twelve-digit card variety. RFID reader circuit, that creates 125KH{z} magnetic signal. This magnetic signal is transmitted by the loop antenna associated together with this circuit that is employed to scan the RFID tag variety. RFID tag is employed as security access card. therefore, each item has the individual RFID tag which provides the item name. RFID reader is interfaced with microcontroller. Here the microcontroller is that the flash sort reprogrammable microcontroller during which we have a tendency to already programmed with card variety. The microcontroller is interfaced with keyboard. A smart looking system has the feature of automatic bill generation once a client carries a trolley car packed with purchased product with RFID tags in every of those products. These RFID tags sense the product within the trolley car victimization RFID reader and so the bills are generated mechanically. The RFID tags used on product can have Ultra-high frequency. Customers is also a registered as an alternative a non-registered client. The registered client is given a wise card and non-registered customers have to be compelled to pay solely at the money counter. Zigbee that is a wireless technology is utilized for preventing knowledge interference whereas gathering info from the cart to the server. each trolley car can have a Product Identification Device (PID). The sensible cart would be ready to mechanically scan the product place into the cart via the RFID Reader. A small controller is put in on the cart for processing and a show (LCD) digital display and victimization that automaton mobile application will do QR reader payment through from our checking account.
+\subsection{Purpose of the project}
+\begin{enumerate}
+\item It creates a more robust looking expertise for the customers by saving their time.
+\item It minimizes the man-power needed at the looking mall, because the checking-out method at the check-out counters is eliminated altogether.
+\item It handles cases of deception if any, thereby creating the system enticing not solely to the shoppers, however additionally to the sellers.
+\item The system style significantly minimizes the overhead of wireless communication among the devices concerned within the system as virtually each process is finished regionally at every cart instead of transmission packets to a different node. Hence even when there are plenty of consumers gift within the looking mall, there'll not be any deterioration within the performance owing to communication traffic jam.
+\end{enumerate}
+\subsection{Comparison}
+\hspace*{1cm}If we compare, RFID technology is found to be a lot of comprehensive than barcode technology. it's attainable to scan RFID tags from a bigger distance. associate RFID reader will access the knowledge of the tag from a distance of around three hundred feet, whereas barcode technology cannot be scan from a distance of quite fifteen feet. RFID technology additionally scores over barcode technology in terms of speed. RFID tags will be taken abundant quicker than barcode tags. Barcode reading is relatively slower as a result of it needs an immediate line of sight. On a median, a barcode reader takes around one second to with success interpret 2 tags, whereas within the same time the RFID reader will interpret around forty tags. RFID tags are well protected or either established within the merchandise, and thence isn't subjected an excessive amount of wear and tear. decoding a barcode needs an immediate line of sight to the written barcode, thanks to that the barcode is written on the outer facet of the merchandise, and is therefore subjected to bigger wear and tear. It additionally limits the re-utilization of barcodes. As barcode lacks scan and write facility, it's impractical to feature to the knowledge already existing on that. On the opposite hand revising on RFID tags is feasible.
+\begin{table}
+\centering
+\begin{tabular}{ |p{8cm}||p{8cm}| }
+\hline
+\textbf{Existing system} & \textbf{RFID based system} \\ 
+\hline\hline
+Manual billing & Automatic billing\\
+\hline
+Human staff required for billing & No human staff required for billing.\\
+\hline
+Barcode is used in system & RFID is used in system\\
+\hline
+Low product cost but overall expenses are much high & Product is little expensive but overall expenses is much low\\
+\hline
+Difficult to track the product & Easy to locate/track the product\\
+\hline
+Getting product information is difficult and time consuming & Getting product information is easy and no extra time needed\\
+\hline
+It does not disclose any automatic way of indicating to the shopper how the total bill is affected as objects are added or removed from the cart & LCD display is present which will show the updated bill every time the shopper add or remove any object from the cart\\
+\hline
+\end{tabular}
+\caption{Comparison of Existing System and RFID System}
+\end{table}
+\subsection{Problem Statement}
+\hspace*{1cm}The proto system aim is to eliminate all the inconveniences as possible from the systems and to make a system, which is consumer kindly, customer-friendly and high performing The system aim would be consumer convenience and an overall time efficiency and high performance. Present scenario in shopping supermarkets time consumption is big problem at billing section. The present system used in shopping malls for billing involves lots of manual handling and is slow and tedious. It helps in tracking and identification of trolleys, which is useful for the management of the shop but does nothing for the customer. Also, the present system has many limitations. It does not provide a feasible solution to reduce the time spent by the customer in the store, mainly while standing in line for billing and payment. Waiting in queue leads to frustrated customers and irksomeness. This is because of a lack of alternative mode of payments and collision issues as signals are easily intercepted. The main drawback is the lack of satisfaction and ease of use on the part of the customer. Consumers have no idea about the present day offers in supermarkets. Sometimes, shopping is done beyond the budget of the customer. So, keeping all these in mind the system needs to be developed which provides customer an easy-to-use interface and also a way for the vendors to endorse more products alongside and achieve high profit. 
+\newpage
+\begin{center}
+\section{LITERATURE REVIEW}
+\end{center}
+\hspace*{1 cm}Supermarket is that the place wherever customers return to get their daily victimization merchandise and procure that. Therefore, there's ought to calculate what number merchandise square measure oversubscribed and to get the bill for the client. Cashier's desks square measure placed during a position to market circulation. At present, several grocery store chains try to additional cut back labor prices by shifting to self-service check-out machines, wherever one worker will superintend a gaggle of 4 or 5 machines quickly, aiding multiple customers at a time. So, the authors had projected a Central machine-driven request System that access the merchandise information and calculates the whole quantity of buying for that specific cart. Since every cart is hooked up with product identification device (PID), through ZigBee communication inflammatory disease sends its data to central machine-driven request system, there it calculates web value for the purchased merchandise. Client will get their request data at the packing section per their Cart number. Even there's no want for a money collector, just in case client uses their debit/credit for bill payment. The machine-driven central request system consists of a ZigBee transceiver and a server/system connected to access product information.\\
+\hspace*{1 cm}Radio Frequency Identification (RFID) could be a technique that identifies objects through radio communications. associate degree RFID system includes the subsequent vital components: 1) RFID Tags (or Transponders): Tags may well be classified into active semi active, and passive tags counting on whether or not they have embedded power or not and what the embedded steam-powered is employed for; 2) RFID Readers (or Interrogators): associate degree RFID scanner typically has quite one separate antenna and is accountable to read potential tags in its proximity. The communications between the reader associate degreed tags area unit stipulated by an air-interface protocol; 3) Database: every record of RFID data might contain data like reading time, location, and tag EPC. RFID readers typically store some data at the front and a clean and pre-processed RFID information exists at the back-end. A general RFID design is represented in figure that includes of Back-end code system and frond-end communication system.\\
+\hspace*{1 cm}An Overview RFID technology is amongst the foremost revolutionary technologies which will form tomorrow's pervasive retail sales. This technology offers a very important set of opportunities that improve the searching expertise of consumers once visiting any self-service store. Indeed, this technology is progressively promising to the extent of a possible replacement the barcode system as new low value RFID tag producing procedures have emerged. Radio-Frequency Identification is a technology that uses radio waves to transfer information from Associate in Nursing electronic tag, referred to as RFID tag or label, connected to Associate in Nursing object, through a reader for the aim of distinctive and trailing the object. RFID Tag is a special sort wireless card that has constitutional the embedded chip alongside loop antenna. The constitutional embedded chip represents the twelve-digit card range. The RFID reader is the circuit that generates 125KHZ magnetic signal. This magnetic signal is transmitted by the loop antenna connected alongside this circuit that is employed to scan the RFID card range. During this project, RFID card is used as a security access card. Thus, every product has the individual RFID card that represents the product name.
+\begin{figure}[h]
+\includegraphics[scale=0.4]{CentralAutomatedBillingSystem.png}
+\centering
+\caption{Central Automated Billing System}
+\end{figure}\\
+\hspace*{1 cm}The RFID reader is interfaced with Arduino. Here the Arduino is that the flash sort programmable Arduino within which we have a tendency to already programmed with the card range. It is a tiny low electronic device that reads the radio frequency and transfers the info to the device. The RFID device serves the same purpose as a bar code or a magnetic stick on the rear of a Master card, ATM card etc. It provides a singular attribute for that object. And even as a bar code or magnetic stick should be scanned to get the data, the RFID device should be scanned to recover the distinctive info. One of the main variations between RFID and barcode technology, is RFID rejects they would like for line-of sight reading on that bar secret writing depends. there's a colossal amendment in looking methodology. From native markets individual's area unit moving to marts. the rationale is simple; they get all their needed things underneath one roof, from vegetables to cosmetics. however, everybody can agree from one downside of standing in long queue for charge, even the individuals have electronic cash currently. Ultimately, individuals ought to compromise with either their precious time or with the number of things purchased.
+\subsection{Pre-Existing System}
+\begin{itemize}
+\item Dr. Suryaprasad J in “A Novel Low-Cost Intelligent Shopping Cart” proposed to develop a low-cost intelligent shopping aid that assists the customer to search and select products and inform the customer on any special deals available on the products as they move around in the shopping complex. 
+\item Amine Karmouche in “Aisle-level Scanning for Pervasive RFID-based Shopping Applications” proposed to develop a system that is able to scan dynamic and static products in the shopping space using RFID Reader antennas. Instead of conducting the RFID observations at the level of individual carts, aisle-level scanning is performed.
+\item S. Archana Mala and Mrs. N. Leela explained notification given by GPRS when destination reached and the interfacing techniques. Mainly focusses on hardware implementation.
+\item Satish Kamble in “Developing a Multitasking Shopping Trolley Based on RFID Technology" proposed to develop a product to assist a person in everyday shopping in terms of reduced time spent while purchasing. The main aim of proposed system is to provide a technology oriented, low-cost, easily scalable, and rugged system for assisting shopping in person.
+\item Mr. P. Chandrasekar in “Smart Shopping Cart with Automatic billing System through RFID and ZigBee" proposed to develop a shopping cart with a Product Identification Device(PID) which will contain a microcontroller, a LCD, an RFID reader, EEPROM, and ZigBee module. Purchasing product information will be read through a RFID reader on shopping cart, meanwhile SMART SHOPPING TROLLEY USING RFID Komal Ambekar, Vinayak Dhole, Supriya Sharma, Tushar Wadekar International Journal of Advanced Research in Computer Engineering \& Technology (IJARCET) Volume 4 Issue 10, October 2015.
+\end{itemize}
+\subsection{Existing System}
+\hspace*{1 cm}The presently accessible technique in searching malls is barcode technique. During this technique there are barcode labels on each product which could be flick thru specially designed barcode readers. A barcode reader is Associate in electronic   device   for   reading   written   barcodes. Like   a flatbed scanner, it consists of a light-weight offer, a lens and   a lightweight sensing element translating   optical   impulses   into electrical ones. Additionally, nearly all barcode readers contain decoder electronic equipment analyzing the barcode’s image information provided by the sensing element and causing the barcode’s content to the scanner's output port. When we have a tendency to  have an inclination to settle on any product for getting we have a tendency to place it among  the self-propelled vehicle  and  take  it  to  the  cashier.  The cashier scans the merchandise through the barcode scanner and offers North yank country the bill. however, this becomes a slow technique once ton of merchandise is to be scanned, thus making the billing method slow. This eventually leads to long queues. While the customer keeps the product in the smart trolley, the Radio frequency ID reader automatically senses the product by scanning the tag. And its corresponding electronic product code number is generated automatically. To store the item price and total billing data, microcontroller memory is used LCD display. This electronic product code provides the information of the product its name and price.
+\begin{figure}[h]
+\includegraphics[scale=0.5]{BarcodeScanning.png}
+\centering
+\caption{Barcode Scanning}
+\end{figure}
+\subsection{Proposed System}
+\hspace*{1 cm}The current RFID technology is situated at a definite static location at entrance.  This system is wide utilized in most searching complicated all told places. withal, the projected sensible tramcar with RFID is hooked up at the moving tramcar, that is completely different from the present tramcar.   The projected plan is once any selected product is born in into the cart, RFID reader reads the tag within the merchandise and also the info of the merchandise is extracted and displayed on the digital display screen. At the same time, request info is additionally updated. \\
+\begin{figure}[h]
+\includegraphics[scale=1]{RFIDbasedsmarttrolley.jpg}
+\centering
+\caption{RFID based Smart Trolley}
+\end{figure}\\
+\hspace*{1 cm}The operating of the Intelligent searching Cart will be explained with the subsequent steps: 
+\begin{itemize}
+\item Once shoppers with the cart, press “start button” the system turns ON and then all the parts such as RFID readers, Arduino and physical media begin operating.
+\item Each product has an RFID tag that contains distinctive id. These IDs are fed into the info appointed to the corresponding product.  
+\item Once the consumer drops any product within the cart then the RFID reader reads the tag. The knowledge of the merchandise is extracted and displayed on the digital display screen.
+\item These steps are continual till the finish of searching button is ironed. Once the “End Shopping” button is ironed the entire bill is send to master laptop.
+\item There is conjointly an possibility provided to delete a number of the product from the cart and also the bill can be updated consequently. This goes by the client alternative.
+\item At the top of searching, the client will without delay pay the bill and leave.
+\item Inventory standing of the product is conjointly updated at the finish of searching.
+\end{itemize}
+\begin{figure}[h]
+\includegraphics[scale=1.5]{SmartTrolley.jpg}
+\centering
+\caption{Smart Trolley}
+\end{figure}
+\subsection{Why RFID?}
+\hspace*{1 cm}Radio-frequency identification (RFID) might be a technology that uses radio waves to transfer info from associate electronic tag, acknowledged as RFID tag or label, connected to associate object, through a reader for the purpose of characteristic and chase the object. RFID Tag might be a special kind wireless card that has integral the embedded chip aboard loop antenna. The integral embedded chip represents the twelve-digit card selection. RFID reader is that the circuit that generates 125KHZ magnetic signal. This magnetic signal is transmitted by the loop antenna connected aboard this circuit that is used to scan the RFID card selection. In this project RFID card is used as security access card. Thus, each product has the individual RFID card that represents the merchandise name. RFID reader is interfaced with Arduino. Here the Arduino is that the flash kind reprogrammable Arduino inside that we have a tendency to tend to already programmed with card selection.
+\subsubsection{Surpasses Barcode limit}
+\hspace*{1 cm}RFID avoids the constraints of barcode scanning, which needs line-of-sight access to every barcode and may solely be wont to scan one item at a time. Instead, RFID tags don't need line-of-site, and multiple RFID tags may be detected and skim remotely and at the same time they'll be scan from a range of distances supported the kind of tag and therefore the use of a hand-held reader or a hard and fast asset RFID reader combined with an antenna.\\
+\hspace*{1 cm}This means that, even with entry-level hand-held readers, multiple RFID tags may be scan at the same time from a distance six to fifteen feet, and a lot of advanced tags alter distances of thirty to fifty feet or a lot of for choose things. So, instead of having to select up or flip over a chunk of kit and scan its barcode, a user will merely wave a hand-held reader at intervals vary of multiple assets labelled with RFID. The device can mechanically scan and acknowledge the tags, even though they're placed beneath the objects and don't seem to be visible. Moreover, mounted readers combined with antennas eliminate the requirement for hand-held reading and supply a completely automatic answer for trailing the movement or location of assets and even workers just about any-place in your facilities.
+\subsubsection{May eliminate Human Errors}
+RFID not solely streamlines and automates quality scanning however additionally eliminates the chance of human error. every quality or labeled item is detected and known mechanically, and it's matched up with the right data in your info mistreatment its distinctive ID. there's no chance of human scanning errors or incorrect work or change of data on paper records or during a computer program. Thus, enables makers to keep up a totally correct inventory of all labeled assets and properly account for current assets and future offer chain, planning, or instrumentality wants. Plus, with RFID tagging, staff will quickly find and determine any quality or perhaps track the movement and verify the placement of staff any place in your buildings.
+\subsubsection{Advantages of RFID}
+\begin{itemize}
+\item RFID technology automates knowledge assortment and immensely reduces human effort and error.
+\item RFID supports tag reading with no line-of-sight or independent scans needed.
+\item RFID browsers will read multiple RFID tags at the same time, providing will increase in potency.
+\item All RFID tags at intervals vary are often detected instantly and matched with data in your info.
+\item Assets are often cross-referenced against assigned locations and recorded as gift, missing, or settled.
+\item RFID are often integrated with active scanning and stuck readers for a completely machine-driven following resolution.
+\item Assets and staff are often half-track and set mechanically for everything from offer chain and plus management to facility security and emergency coming up with.
+\item Available scanners support each RFID and barcoding thus you'll upgrade at your own pace.
+\end{itemize}
+\newpage
+\begin{center}
+\section{METHODOLOGY}
+\end{center}
+\subsection{Description}
+\hspace*{1 cm}In our project we used three type of communications between the modules. First of all the communication established between the Arduino and RFID is Serial Peripheral Interface (SPI) Communication. For SPI communication we used pin 10, 11, 12, 13 of the Arduino. These pins are used for SPI communication. Then I2C communication is established between LCD and Arduino. For I2C communication we used Pins A4 and A5. And for implementing I2C communication we used Wire library. And lastly the Serial Communication is established between WiFi module and Arduino. For serial communication  we can use any digital pins of Arduino. SodtwareSerial library is used for serial communication. Let's see these communications briefly:
+\subsubsection{SPI Communication}
+\hspace*{1 cm}SPI bus is a full-duplex serial communication standard that enables simultaneous bidirectional communication between a master device and one or more slave devices. Because the SPI protocol does not follow a formal standard, it is common to find SPI devices that operate slightly different (the number of transmitted bits may differ, or the slave select line might be omitted, among other things). This chapter focuses on implementing the most commonly accepted SPI commands (which are the ones that are supported by the Arduino IDE).\\
+\hspace*{1 cm}SPI can act in four main ways, which depend on the requirements of your device. SPI devices are often referred to as slave devices. SPI devices are synchronous, meaning that data is transmitted in sync with a shared clock signal (SCLK). Data can be shifted into the slave device on either the rising or falling edge of the clock signal (called the clock phase), and the SCLK default state can be set to either high or low (called the clock polarity). Because there are two options for each, you can configure the SPI bus in a total of four ways. Table 3.1 shows each of the possibilities and the modes that they correspond to in the Arduino SPI library.
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l | l |}
+\hline
+\textbf{SPI MODE} & \textbf{CLOCK POLARITY} & \textbf{CLOCK PHASE}\\
+\hline
+Mode 0 & Low at idle & Data Capture on clock Rising pulse \\
+Mode 1 & Low at idle & Data Capture on clock Falling pulse \\
+Mode 2 & High at idle & Data Capture on clock Falling pulse \\
+Mode 3 & High at idle & Data Capture on clock Rising pulse \\
+\hline
+\end{tabular}
+\caption{SPI Communication modes}
+\end{table}
+\subsubsection{I2C communication}
+\hspace*{1 cm}The I2C bus allows multiple slave devices to share communication lines with a single master device. In this chapter, the Arduino acts as the master device. The bus master is responsible for initiating all communications. Slave devices cannot initiate communications; they can only respond to requests that are sent by the master device. Because multiple slave devices share the same communication lines, it's very important that only the master device can initiate communication. Otherwise, multiple devices may try to talk at the same time and the data would get garbled.\\
+\hspace*{1 cm}All commands and requests sent from the master are received by all devices on the bus. Each I2C slave device has a unique 7-bit address, or ID number. When communication is initiated by the master device, a device ID is transmitted. I2C slave devices react to data on the bus only when it is directed at their ID number. Because all the devices are receiving all the messages, each device on the I2C bus must have a unique address. Some I2C devices have selectable addresses, whereas others come from the manufacturer with a fixed address. If you want to have multiple numbers of the same device on one bus, you need to identify components that are available with different IDs. Temperature sensors, for example, are commonly available with various preprogrammed I2C addresses because it is common to want more than one on a single I2C bus. In this chapter, you use the TC74 temperature sensor. A peek at the TC74 datasheet reveals that it is available with a variety of different addresses. Figure 8-2 shows an excerpt of the datasheet. In this chapter, you use TC74A0- 5.0VAT, which is the 5V, T0-220 version of the IC with an address of 1001000.\\
+\textbf{Wire Library:}\\
+\hspace*{1 cm}This library allows you to communicate with I2C / TWI devices. On the Arduino boards with the R3 layout (1.0 pinout), the SDA (data line) and SCL (clock line) are on the pin headers close to the AREF pin. The Arduino Due has two I2C / TWI interfaces SDA1 and SCL1 are near to the AREF pin and the additional one is on pins 20 and 21.
+\begin{table}[h]
+\centering
+\begin{tabular}{| l | l |}
+\hline
+\textbf{Board} & \textbf{I2C / TWI pins} \\
+\hline
+Uno, Ethernet & A4 (SDA), A5 (SCL) \\
+Mega2560 & 20 (SDA), 21 (SCL) \\
+Leonardo & 2 (SDA), 3 (SCL) \\
+Due & 20 (SDA), 21 (SCL), SDA1, SCL1 \\
+\hline
+\end{tabular}
+\caption{TWI pins location on various Arduino boards}
+\end{table}
+\hspace*{1 cm}As of Arduino 1.0, the library inherits from the Stream functions, making it consistent with other read/write libraries. Because of this, send() and receive() have been replaced with read() and write().There are both 7- and 8-bit versions of I2C addresses. 7 bits identify the device, and the eighth bit determines if it's being written to or read from. The Wire library uses 7 bit addresses throughout. If you have a datasheet or sample code that uses 8 bit address, you'll want to drop the low bit (i.e. shift the value one bit to the right), yielding an address between 0 and 127. However the addresses from 0 to 7 are not used because are reserved so the first address that can be used is 8. Please note that a pull-up resistor is needed when connecting SDA/SCL pins.\\
+\hspace*{1 cm}The Wire library implementation uses a 32 byte buffer, therefore any communication should be within this limit. Exceeding bytes in a single transmission will just be dropped. To use this library:
+\begin{lstlisting}[language=Arduino]  
+#include <Wire.h>  
+\end{lstlisting}
+\subsubsection{Serial Communication}
+\hspace*{1 cm}Serial communication is the most widely used approach to transfer information between data processing equipment and peripherals. In embedded system, Serial communication is the way of exchanging data using different methods in the form of serial digital binary. Some of the well-known interfaces used for the data exchange are RS-232, RS-485, I2C, SPI etc.\\
+\hspace*{1 cm}In serial communication, data is in the form of binary pulses. In other words, we can say Binary One represents a logic HIGH or 5 Volts, and zero represents a logic LOW or 0 Volts. Serial communication can take many forms depending on the type of transmission mode and data transfer. The transmission modes are classified as Simplex, Half Duplex, and Full Duplex. There will be a source (also known as a sender) and destination (also called a receiver) for each transmission mode.\\
+\hspace*{1 cm}Serial communication on pins TX/RX uses TTL logic levels (5V or 3.3V depending on the board). Don't connect these pins directly to an RS232 serial port; they operate at +/- 12V and can damage your Arduino board. Serial is used for communication between the Arduino board and a computer or other devices. All Arduino boards have at least one serial port (also known as a UART or USART): Serial. It communicates on digital pins 0 (RX) and 1 (TX) as well as with the computer via USB. Thus, if you use these functions, you cannot also use pins 0 and 1 for digital input or output.\\
+\hspace*{1 cm}The Arduino hardware has built-in support for serial communication on pins 0 and 1 (which also goes to the computer via the USB connection). The native serial support happens via a piece of hardware (built into the chip) called a UART. This hardware allows the Atmega chip to receive serial communication even while working on other tasks, as long as there room in the 64 byte serial buffer.\\
+\textbf{SoftwareSerial Library:}\\
+\hspace*{1 cm}The SoftwareSerial library has been developed to allow serial communication on other digital pins of the Arduino, using software to replicate the functionality (hence the name "SoftwareSerial"). It is possible to have multiple software serial ports with speeds up to 115200 bps. A parameter enables inverted signaling for devices which require that protocol. To use it, specify {\#}include {\textless}SoftwareSerial.h{\textgreater}. You will need to create an instance of SoftwareSerial class.\\
+\textbf{Constructor for SoftwareSerial:}\\
+Description:\\
+\hspace*{1 cm}This is a constructor for creating an instance of the SoftwareSerial class.\\
+Syntax:
+\begin{lstlisting}[language=Arduino]  
+SoftwareSerial(receivePin, transmitPin)
+SoftwareSerial(receivePin, transmitPin, inverse_logic)
+\end{lstlisting}
+Parameters:\\
+\hspace*{1 cm}receivePin: Receive pin\\
+\hspace*{1 cm}transmitPin: Transmit pin\\
+\hspace*{1 cm}inverse{\_}logic: Inverse logic (default false)\\
+Returns:\\
+\hspace*{1 cm}None
+\subsection{Block Diagram}
+\begin{figure}[h]
+\includegraphics[scale=0.6]{BlockDiagram1.png}
+\centering
+\caption{Block Diagram}
+\end{figure}
+
+\subsection{Working Principle}
+\hspace*{1 cm}As shown in the above block diagram, the Arduino is interfaced with all the remaining components. Once the microcontroller is powered up, it is initialized and set to the basic settings, now the system is ready to proceed which means the RFID card and the tag can be scanned. Then the RFID card or tag is scanned the RFID reader fetches all the details from the scanned card or tag, and if the scanning process is successful the product details will be transferred to the microcontroller’s memory and then will be transferred to the LCD module to be displayed on the LCD screen. Here the RFID module uses the SPI communication technique to transfer or to retrieve the data from the RFID card or tag [4]. After the shopping is completed the entire bill details will be displayed on the LCD screen, each card or tag acts as a product, where the product details are pre early set or dumped into the card. And we are using push button to remove the products from the cart. All this data is sent to local server using ESP8266 where we can see the data of the things we bought and the total price of the purchase.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.3]{CircuitDiagram1.jpg}
+\caption{Circuit Diagram}
+\end{figure}
+
+\begin{enumerate}
+\item Connecting to WiFi: 
+\begin{itemize}
+\item For getting data of products purchased we have to connect the wifi module i.e. ESP8266 to the wifi using which we can upload data on the local host browser where we can get the total amount and the list of products we purchased.The Wifi module is connected to Arduino by D3 and D2 pin of Arduino to TXD and RXD pins of ESP8266 respectively. And the communication established between ESP 8266 and Arduino is Serial communication.
+\end{itemize}
+\item Getting data from RFID Tags:
+\begin{itemize}
+\item To know the product there will be RFID Tags attached to every product. When it will be scanned to RFID reader the data will be stored in microcontroller. As we will be done with the purchasing there will be RFID tag for total as we scan that tag to RFID reader we will get the total amount.
+\end{itemize}
+\item Displaying data on LCD:
+\begin{itemize}
+\item We use the LCD to display the data. As we read the data from the RFID tags it will be displayed on the LCD screen and at last when we will use the Total RFID Tag it will display the total amount on the LCD screen.
+\end{itemize}
+\item Sending data to cloud  through ESP8266:
+\begin{itemize}
+\item ESP8266 is used to upload the data on the cloud. As soon as we will be done with the shopping we will read the data from the Total RFID tag and after this the datawill be uploaded on the cloud. This will reduce the time of shopping and waiting in the long queue.
+\end{itemize}
+\end{enumerate}
+
+\newpage
+\begin{center}
+\section{FUTURE \& SCOPE}
+\end{center}
+\subsection{Advantages}
+\begin{itemize}
+\item Smart shopping cart help customers save a lot of time.
+\begin{itemize}
+\item Using smart shopping cart, our smart system keeps track of every commodity going in or out of trolley and the shopping bill will appear on the interactive screen automatically. Customers could pay for the bill directly via their mobile phones at anywhere in the supermarket and at any time.
+\item Since checking out through the cashier usually costs a lot of time, the advantages of smart shopping cart are obvious, the smart shopping cart could help customers save a lot of time.
+\end{itemize}
+\begin{figure}[h]
+\includegraphics[scale=1]{exampleOfSmartCart1.jpg}
+\centering
+\caption{Example Of Smart Cart}
+\end{figure}
+\item Smart shopping cart help customers purchase what they want with lower price.
+\begin{itemize}
+\item The smart shopping cart could collect all the shopping data in the shopping process. These shopping data can be processed to useful data assets. Retailers and brands could send different coupons to different customers according to their shopping behaviors and shopping preference. The coupons could be used immediately after customers have acquired it. This means that the smart shopping cart could help customers purchase what they want.
+\end{itemize}
+\item Smart shopping cart can provide customers healthier and safer shopping process.
+\begin{itemize}
+\item As the corona virus was spreading very fast in this year, customers began to pay attention to their health and safety. Shopping with a smart shopping cart, customers don't have to contact with anyone Scanning bar code of the commodities and checking out could be finished directly on the cart. To conclude, smart shopping cart could provide customers healthier and safer shopping process.
+\end{itemize}
+\begin{figure}[h]
+\includegraphics[scale=0.1]{advantages.jpg}
+\centering
+\caption{Existing System vs Smart Cart}
+\end{figure}
+\item Smart carts offer suppliers in-store marketing opportunities through the digital screen.
+\item Smart carts can help retailers re-purpose cashier labour to assist shoppers on the shop floor so they buy more, and keep shelves stocked.
+\item Smart carts can help retailers with inventory management and analytics, along with effective ways to deliver tailored promotions to customers as they shop.
+\item Smart carts potentially reduce the number of checkouts required in-store. This can create more selling space where the checkouts previously sat, meaning that more products could be sold as a result. 
+\item Smart carts can help shoppers navigate a store in a more time efficient way. 
+\item Smart carts should make the in-store shopping experience smoother and more convenient as shoppers can avoid queues at checkout.
+\end{itemize}
+\subsection{Disadvantages}
+\begin{itemize}
+\item Some predicted the end of offline commerce due to the rapid development of e-commerce via the Internet. In the United States, the decision was made to influence the situation. The Amazon Go stores presented a combination of artificial intelligence, cameras, and sensors, allowing them to make purchases without the help of a cash register. However, there are disadvantages to this technology: profit only in the long run and difficulties in scaling.
+\item Given the lack of ability to inspect merchandise before purchase, consumers are at higher risk of fraud on the part of the merchant than in a physical store. Merchants also risk fraudulent purchases using stolen credit cards or fraudulent repudiation of the online purchase. With a warehouse instead of a retail storefront, merchants face less risk from physical theft.
+\item It is difficult to stick RFID tag to some products. Because of this, it might consume some time. Also maintenance cost increases.
+\item This self-checkout system can be quite costly due to the need to have tags for all goods in the store and scanning system that can be quite expensive, but is very optimal in terms of customer experience.
+\end{itemize}
+
+\subsection{Future Scope}
+\begin{itemize}
+\item The transferring of information from the trolley/basket to the Admin’s system can be made wireless instead of using a USB. Also, with emerging technologies, the movement of the cart can be automated, too. Hence, this system has a number of future applications and can be the basis of some advanced
+inventions in the future.
+\item This system can be also implemented using LI-FI, NFC \& other communication systems.
+\item This system can be advanced by using Beacon Module instead of RFID Module \& including a Load sensor is also a helpful implementation.
+\item In addition to the product details, nutrition facts of the eatables can be added.
+\item Automatic track detection \& movement of the cart can be implemented by using various sensor technologies.
+\item Shopping budget limit can be set; when the limit exceeds buzzer should beep indicating this.
+\item Providing an option to the shoppers to priorly create a shopping list.
+\item The same system can be used in various places.
+\end{itemize}
+\newpage
+\begin{center}
+\section{CONCLUSION}
+\end{center}
+\hspace*{1 cm}Our design of Automatic Billing Cart uses Arduino Uno chip, the target of the project has been archived through this model. This updated model is simple to use, is cost effective and doesn't would like abundant exertions. Radio Frequency Identification (RFID) technologies that are used for product identification, billing, etc. is the key a part of this method. The projected model is simple to use, affordable and doesn't need any special coaching. This model keeps associate account and uses of the prevailing developments and varied kinds of frequency identification and detection technologies that are used for item recognition, request and inventory update. Because the whole system is changing into smart system, the necessity of man power can be decrease, so benefiting the retailers.\\
+\hspace*{1 cm}Theft within the mall is going to be controlled by this smart system, that more adds to the value potency and more benefited to owner. The time efficiency can increase phenomenally since this method can eliminate the waiting queues. A lot of customers may be served in same time so benefiting the retailers and customers yet.\\
+\hspace*{1 cm}We have additionally calculable that the design of the system that may be utilized in the trolley systems for smart and simple searching within the malls to avoid wasting time, energy and cash of the consumers. There are many drawbacks that may be resolved to create updated system a lot of sturdies. A lot of more upgrade are going to be like larger show systems, a GPS huntsman for pursuit the merchandise, additionally the internet facility to browse the offers can be used to make cart more advance provide better consumer experience.
+
+\newpage
+\pagenumbering{roman}
+\setcounter{page}{11}
+\addcontentsline{toc}{section}{References}
+\begin{center}
+\large\textbf{REFERENCES}
+\end{center}
+\begin{enumerate}
+\item https://www.slideshare.net/MahanteshHiremath11/smart-shopping-system-77464373
+\item https://www.jetir.org/papers/JETIR2004337.pdf
+\item https://www.ijser.org/researchpaper/Smart-Shopping-Trolley-For-Supermarkets-Using-Rechargeable-Smart-Card.pdf
+\item https://ieeexplore.ieee.org/document/7033996/
+\item https://www.slideshare.net/laharipothula/rfid-based-smart-shopping-cart-and-billing-system
+\item Mr.P.Chandrasekhar, prof., et.al., “Smart Shopping Cart with Automatic Billing System through RFID and ZigBee” S. A. Engineering College, IEEE 2014.
+\item Prasiddhi K. Khairnar, et.al., “Innovative Shopping Cart for Smart Cities” 2nd conference on Recent Trends in Electronics Information \& Communication Technology (RTEICT), IEEE 2017. 
+\item Swati Zope, Prof. MarutiLimkar, “RFID based Bill Generation and Payment through Mobile”, International Journal of Computer Science and Network (IJCSN), Volume 1, Issue 3, June 2012
+\item Roy Want Intel Research, “An Introduction to RFID Technology” Published by the IEEE CS and IEEE ComSoc, IEEE 2006
+\item http://www.ijcstjournal.org/volume-5/issue-2/IJCST-V5I2P29.pdf
+\item https://www.academia.edu/28898739/Smart{\_}Trolley{\_}and{\_}Automatic{\_}Billing{\_}pdf?auto=download
+\item Murulidhara N, SreeRajendra, “Automated Shopping and Billing with product Inventory Management System” 2015 IJIRT Volume 2 Issue 2
+\item Y. J. Zuo “Survivable RFID systems: Issues, challenges, and techniques”, IEEE Trans. Syst., Man, Cybern. C, Appl. Rev., vol. 40, no. 4, pp.406 -418 2010 
+\item H. H. Bi and D. K. Lin “RFID-enabled discovery of supply networks”, IEEE Trans. Eng. Manag., vol. 56, no. 1, pp.129 -141 2009 
+\item K. Finkenzeller RFID Handbook: Fundamentals and Applications in Contactless Smart Cards and Identification, 2003: Wiley
+\item S. S. Saad and Z. S. Nakad “A standalone RFID indoor positioning system using passive tags”, IEEE Trans. Ind. Electron., vol. 58, no. 5, pp.1961 -1970 2011 
+\item F. Gandino, B. Montrucchio, M. Rebaudengo and E. R. Sanchez “On improving automation by integrating RFID in the traceability management of the agri-food sector”, IEEE Trans. Ind. Electron., vol. 56, no. 7, pp.2357 -2365 2009 
+\item https://www.arduino.cc
+\item https://en.wikipedia.org/wiki/Shopping{\_}cart
+\end{enumerate}
+
+\newpage
+\addcontentsline{toc}{section}{Appendix}
+\begin{center}
+\large\textbf{APPENDIX}\\ 
+\textbf{Microcontroller Programming}
+\end{center}
+\begin{lstlisting}[language=Arduino]  
+#include <SPI.h>
+#include <MFRC522.h>
+#define SS_PIN 10
+#define RST_PIN 9
+MFRC522 mfrc522(SS_PIN, RST_PIN); // Create MFRC522 
+instance.
+#define BUZZER 7 //buzzer pin
+#include <Wire.h>
+#include "rgb_lcd.h"
+rgb_lcd lcd;
+const int colorR = 255;
+const int colorG = 0;
+const int colorB = 0;
+int count = 0;
+int c;
+int p1=0,p2=0,p3=0,p4=0; 
+int c1=0,c2=0,c3=0,c4=0;
+double total = 0;
+int count_prod = 0;
+String str1,str2,str3,str4;
+#include<SoftwareSerial.h>SoftwareSerial comm(2,3); //setting Tx and Rx pins
+String server=""; //variable for sending data to webpage
+boolean No_IP=false; //variable to check for ip Address
+String IP=""; //variable to store ip Address
+int a=0;
+int b=0;
+void setup() 
+{
+Serial.begin(9600);
+comm.begin(9600);
+wifi_init();
+Serial.println("System Ready..");
+SPI.begin(); // Initiate SPI bus
+ mfrc522.PCD_Init(); // Initiate MFRC522
+ pinMode(BUZZER, OUTPUT);
+ pinMode(6, INPUT); 
+ noTone(BUZZER);
+ Serial.println("Put your card to the reader...");
+ Serial.println();
+ lcd.begin(16, 2);
+ lcd.setRGB(colorR, colorG, colorB);
+ lcd.setCursor(0, 0);
+ lcd.print(" AUTOMATIC BILL"); delay (2000);
+ lcd.setCursor(0, 1);
+ lcd.print(" SHOPPING CART ");
+ delay (2000);
+ lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print(" WELCOME TO ");
+ lcd.setCursor(0, 1); 
+ lcd.print("GCOEA Mart");
+}
+void loop() 
+{
+int c=digitalRead(6);
+ // Look for new cards
+ if ( ! mfrc522.PICC_IsNewCardPresent()) 
+ {
+ return;
+ }
+ // Select one of the cards
+ if ( ! mfrc522.PICC_ReadCardSerial()) 
+ {
+ return;
+ }
+ //Show UID on serial monitor
+ Serial.print("UID tag :");
+ String content= "";
+ byte letter;
+ for (byte i = 0; i < mfrc522.uid.size; i++) 
+ {
+ Serial.print(mfrc522.uid.uidByte[i] < 0x10 ? " 0" : " 
+");
+ Serial.print(mfrc522.uid.uidByte[i], HEX); content.concat(String(mfrc522.uid.uidByte[i] < 0x10 ? 
+" 0" : " "));
+ content.concat(String(mfrc522.uid.uidByte[i], HEX));
+ }
+ Serial.println();
+ Serial.print("Message : ");
+ content.toUpperCase();
+ if ((content.substring(1) == "13 F4 8F 16") && (a==0)) 
+//change here the UID of the card/cards that you want to 
+give access
+ {
+ lcd.setCursor(0, 0);
+ lcd.print("Butter Added ");
+ lcd.setCursor(0, 1);
+ lcd.print("Price(Rm):4.00 ");
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ delay(2000);
+ total = total + 4.00;
+ count_prod++;
+ p1++;
+ }
+ else if ((content.substring(1) == "13 F4 8F 16") && 
+(a==1)) //change here the UID of the card/cards that you 
+want to give access
+ {
+ if(p1>0)
+ {
+ lcd.clear();
+ lcd.setCursor(0, 0); lcd.print("Butter Removed!!! "); 
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ delay(2000);
+ total = total - 4.00;
+ lcd.clear();
+ p1--;
+ }
+ else
+ {
+ lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print("Not in cart!!! ");
+ delay(2000);
+ lcd.clear();
+ }
+ }
+ if ((content.substring(1) == "0C 05 EC 2E") && (a == 0)) 
+ {
+ lcd.setCursor(0, 0);
+ lcd.print("Milk Added ");
+ lcd.setCursor(0, 1);
+ lcd.print("Price(Rm):6.00 ");
+ digitalWrite(6,LOW);
+ tone(BUZZER, 500);
+ delay(300); noTone(BUZZER);
+ delay(2000);
+ total = total + 6.00;
+ count_prod++;
+ p2++;
+ }
+ else if ((content.substring(1) == "0C 05 EC 2E") && (a 
+== 1))
+ {
+ if(p2>0)
+ {
+ lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print("Butter Removed!!! ");
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ delay(2000);
+ total = total - 6.00;
+ lcd.clear();
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ p2--;
+ }
+ else
+ {
+ lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print("Not in cart!!! ");
+ tone(BUZZER, 500); delay(300);
+ noTone(BUZZER);
+ lcd.clear();
+ }
+ }
+ if ((content.substring(1) == "CC 00 E6 2E") && (a == 0)) 
+ {
+ lcd.setCursor(0, 0);
+ lcd.print("Egg Added ");
+ lcd.setCursor(0, 1);
+ lcd.print("Price(Rm):5.00 ");
+ digitalWrite(6,LOW);
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ delay(2000);
+ total = total + 5.00;
+ count_prod++;
+ p3++;
+ }
+ else if ((content.substring(1) == "CC 00 E6 2E") && (a 
+== 1))
+ {
+ if(p3>0)
+ {
+ lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print("Egg Removed!!! ");
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ delay(2000); total = total - 5.00;
+ lcd.clear();
+ p3--;
+ }
+ else
+ {
+ lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print("Not in cart!!! ");
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ lcd.clear();
+ }
+ }
+ if ((content.substring(1) == "9C 59 12 4A")&& (a == 0))
+ {
+ lcd.clear(); 
+ lcd.setCursor(0, 0);
+ lcd.print("Total Price :-");
+ lcd.setCursor(0, 1);
+ lcd.print(total);
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ delay(5000);
+ lcd.clear();
+ lcd.setCursor(0, 0);
+ lcd.print(" THANKS FOR "); lcd.setCursor(0, 1);
+ lcd.print(" VISITING ");
+ tone(BUZZER, 500);
+ delay(300);
+ noTone(BUZZER);
+ c1= p1*4;
+c2= p2*6;
+c3= p3*5;
+b=0;
+Serial.println("Refresh Page");
+while(b<1000)
+{
+b++;
+while(comm.available())
+{
+if(comm.find("0,CONNECT"))
+{
+Serial.println("Starting");
+sendToServer();
+Serial.println("Finished");
+delay(1000);
+}
+}
+delay(1);
+}
+ }
+}void findIp(int time1) //check for the availability of IP 
+Address
+{
+int time2=millis();
+while(time2+time1>millis())
+{
+while(comm.available()>0)
+{
+if(comm.find("IP has been read"))
+{
+No_IP=true;
+}
+}
+}
+}
+void showIP()//Display the IP Address 
+{
+IP="";
+char ch=0;
+while(1)
+{
+comm.println("AT+CIFSR");
+while(comm.available()>0)
+{
+if(comm.find("STAIP,"))
+{
+delay(1000);
+Serial.print("IP Address:");
+while(comm.available()>0)
+{
+ch=comm.read();if(ch=='+')
+break;
+IP+=ch;
+}
+}
+if(ch=='+')
+break;
+}
+if(ch=='+')
+break;
+delay(1000);
+}
+Serial.print(IP);
+Serial.print("Port:");
+Serial.println(80);
+}
+void establishConnection(String command, int timeOut) 
+//Define the process for sending AT commands to module
+{
+int q=0;
+while(1)
+{
+Serial.println(command);
+comm.println(command); 
+while(comm.available())
+{
+if(comm.find("OK"))
+q=8;
+}
+delay(timeOut);
+if(q>5)
+break;q++;
+}
+if(q==8)
+Serial.println("OK");
+else
+Serial.println("Error");
+}
+void wifi_init() //send AT commands to module
+{
+establishConnection("AT",100);
+delay(1000);
+establishConnection("AT+CWMODE=3",100);
+delay(1000);
+establishConnection("AT+CWQAP",100); 
+delay(1000); 
+establishConnection("AT+RST",5000);
+delay(1000);
+findIp(5000);
+if(!No_IP)
+{
+Serial.println("Connecting Wifi....");
+establishConnection("AT+CWJAP=\"aniket\",\"SKYSKYSKY@3\"",
+7000); //provide your WiFi username and password here
+}
+else
+{
+}
+Serial.println("Wifi Connected"); 
+showIP();
+establishConnection("AT+CIPMUX=1",100);
+establishConnection("AT+CIPSERVER=1,80",100);
+}void sendData(String server1)//send data to module
+{
+int p=0;
+while(1)
+{
+unsigned int l=server1.length();
+Serial.print("AT+CIPSEND=0,");
+comm.print("AT+CIPSEND=0,");
+Serial.println(l+2);
+comm.println(l+2);
+delay(100);
+Serial.println(server1);
+comm.println(server1);
+while(comm.available())
+{
+//Serial.print(Serial.read());
+if(comm.find("OK"))
+{
+p=11;
+break;
+}
+}
+if(p==11)
+break;
+delay(100);
+}
+}
+void sendToServer()//send data to webpage
+{
+String str1="<td>milk </td>" + String(c1); //String to 
+display on webpageString str2="<br><td>egg </td> "+String(c2); //another 
+string to display on webpage
+String str3= "<br><td>bread </td>"+String(c3);\
+String str4 = "<br><th>Grand Total </th>"+String(total);
+server = "<h1>E Cart using IoT</h1>";
+sendData(server);
+server=str1;
+server+=str2;
+server+=str3;
+server+=str4;
+sendData(server);
+delay(5000);
+comm.println("AT+CIPCLOSE=0"); 
+}
+\end{lstlisting}
+
+\end{document}
